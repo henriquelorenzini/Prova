@@ -1,0 +1,20 @@
+public class Sundae extends Sorvete {
+    public String calda;
+    public int custoDaCalda;
+
+    public Sundae(String nome, int custo, String calda, int custoDaCalda) {
+        super(nome, custo);
+        this.calda = calda;
+        this.custoDaCalda = custoDaCalda;
+    }
+
+    public int getCusto() {
+        return this.custoDaCalda + this.custo;
+    }
+    
+    @Override
+    public String toString() {
+      return String.format("Sundae de %s com\n%-25s %6s", getCobertura(), 
+        getNome(), Sorveteria.centavos2ReaisECentavos(getCusto()));
+    }
+}
