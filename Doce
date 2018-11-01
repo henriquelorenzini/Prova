@@ -1,0 +1,25 @@
+public class Doce extends ItemSobremesa {
+    public String nome;
+    public double peso;
+    public int precoKg;
+
+    public Doce(String nome, double peso, int precoKg) {
+        super();
+        this.nome = nome;
+        this.peso = peso;
+        this.precoKg = precoKg;
+    }
+
+    @Override
+    public int getCusto() {
+        int preco =  (int) Math.round(peso*precoKg);
+        return preco;
+    }
+
+    @Override
+    public String toString() {
+      return String.format("%.2f g @ %s /kg\n%-25s %6s", getNome(), 
+        Sorveteria.centavos2ReaisECentavos(precoKg), getNome(), Sorveteria.centavos2ReaisECentavos(getCusto()));
+    }
+
+}
