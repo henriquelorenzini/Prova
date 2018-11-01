@@ -1,0 +1,70 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+ */
+public class Checkout {
+	private List<ItemSobremesa> itens;
+
+	public Checkout() {
+		itens = new ArrayList<>();
+	}
+
+	public void esvazia() {
+		itens.clear();
+	}
+	
+	
+	public void insereItem(ItemSobremesa item) {
+		itens.add(item);
+	}
+	
+	
+	public int numeroDeItens() {
+		return itens.size();
+	}
+	
+	
+	public int custoTotal() {
+		int custoTotal = 0;
+
+		for (ItemSobremesa item : itens) {
+			custoTotal += item.getCusto();
+		}
+		return custoTotal;
+		return 0;
+	}
+	
+	
+	public int impostoTotal() {
+		double imposto = Sorveteria.IMPOSTO;
+		int custoTotal = 0;
+
+		for (ItemSobremesa item : itens) {
+			custoTotal += Math.round ((item.getCusto() * imposto) / 100);
+		}
+
+		return custoTotal;
+		return 0;
+	}
+	
+	
+	@Override
+	public String toString() {
+		// gera cabeÃ§alho
+		String saida = String.format("%24s\n", Sorveteria.NOME_LOJA);
+		String linha = "";
+		for (int i = 0; i < Sorveteria.NOME_LOJA.length(); i++)
+			linha += "-";
+		saida += String.format("%24s\n\n", linha);
+		
+		// gera itens
+		for (ItemSobremesa item : itens) {
+			saida += item.toString() + "\n";
+		}
+		saida += String.format("%-25s %6s\n", "Imposto", Sorveteria.centavos2ReaisECentavos(impostoTotal()));
+		saida += String.format("%-25s %6s", "Custo Total", Sorveteria.centavos2ReaisECentavos(custoTotal()+impostoTotal()));
+		return saida; 
+	}
+	
+}
