@@ -1,0 +1,26 @@
+public class Cookie extends ItemSobremesa {
+    public String nome;
+    public int num, precoDz;
+
+    public Cookie(String nome, int num, int precoDz) {
+        super();
+        this.nome = nome;
+        this.num = num;
+        this.precoDz = precoDz;
+    }
+
+    @Override
+    public int getCusto() {
+        int custo = Math.round((precoDz * num) / 12);
+        return custo;
+    }
+    
+    @Override
+    public String toString() {
+      return String.format("%d @ %s /dz\n%-25s %6s", getNome(), 
+        Sorveteria.centavos2ReaisECentavos(getPreco()), getNome(), Sorveteria.centavos2ReaisECentavos(getCusto()));
+
+   }
+
+	
+}
