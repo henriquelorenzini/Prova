@@ -1,0 +1,19 @@
+public class Sorvete extends ItemSobremesa {
+    public String nome;
+    public int custo;
+    public Sorvete(String nome, int custo) {
+        super();
+        this.nome = nome;
+        this.custo = custo;
+    }
+    @Override
+    public int getCusto() {
+        return custo;
+    }
+
+    @Override
+    public String toString() {
+      return String.format("%-25s %6s", getNome(), Sorveteria.centavos2ReaisECentavos(getCusto()));
+    }
+    
+}
